@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Drawing Demo";
+}
+
+<h2>CraftSynth Image Editor - MVC Demo</h2>
+
+<form method="get" action="/Drawing/Index">
+    <select name="shapeType">
+        <option value="Ellipse">Ellipse</option>
+        <option value="Line">Line</option>
+        <option value="Polygon">Polygon</option>
+    </select>
+    <button type="submit">Draw</button>
+</form>
+
+@if (Request.QueryString["shapeType"] != null)
+{
+    <h3>Rendered Output:</h3>
+    <img src="@Url.Action("Generate", "Drawing", new { shapeType = Request.QueryString["shapeType"] })" alt="Drawing" />
+    <img src="@Url.Action("Fonts","TextDemo")" alt="Fonts Demo" />
+}
